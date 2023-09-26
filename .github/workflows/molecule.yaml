@@ -1,0 +1,35 @@
+---
+name: Ansible Molecule
+
+on:
+
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+
+  molecule:
+    name: Molecule
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Install python
+        run: sudo apt update && sudo apt install -y python3 python3-pip python3-setuptools
+
+      - name: Install Ansible Molecule
+        run: pip3 install --user molecule molecule-plugins[podman] ansible-core
+
+      - name: Run Ansible Molecule
+        run: |
+          molecule --base-config molecule/base.yml test
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+
+      - name: Test installation of HTCondor
+        run: condor_status

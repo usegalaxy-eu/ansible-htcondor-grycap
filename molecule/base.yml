@@ -1,0 +1,47 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: podman
+platforms:
+  - name: ubuntu-focal
+    image: docker.io/eniocarboni/docker-ubuntu-systemd:focal
+    systemd: true
+    privileged: true
+    tty: true
+  - name: ubuntu-jammy
+    image: docker.io/eniocarboni/docker-ubuntu-systemd:jammy
+    systemd: true
+    privileged: true
+    tty: true
+  - name: el-7
+    image: docker.io/eniocarboni/docker-centos-systemd:centos7
+    systemd: true
+    privileged: true
+    tty: true
+  - name: el-8
+    image: rockylinux:8
+    pre_build_image: false
+    systemd: true
+    privileged: true
+    command: "/usr/sbin/init"
+    tty: true
+    dockerfile: ../Dockerfile-rockylinux-systemd.j2
+  - name: el-9
+    image: rockylinux:9
+    pre_build_image: false
+    systemd: true
+    privileged: true
+    command: "/usr/sbin/init"
+    tty: true
+    dockerfile: ../Dockerfile-rockylinux-systemd.j2
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      interpreter_python: auto_silent
+      callback_whitelist: profile_tasks, timer, yaml
+    ssh_connection:
+      pipelining: false
+verifier:
+  name: ansible
