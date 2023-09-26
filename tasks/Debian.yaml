@@ -6,7 +6,7 @@
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
-    update_cache: yes
+    update_cache: true
   with_items:
     - gnupg
     - apt-transport-https
@@ -24,7 +24,7 @@
   ansible.builtin.apt_repository:
     repo: 'deb [arch=amd64] https://research.cs.wisc.edu/htcondor/repo/ubuntu/{{ htcondor_channel }} {{ ansible_distribution_release }} main'
     state: present
-    update_cache: yes
+    update_cache: true
 
 - name: Install condor via package manager
   ansible.builtin.apt:
