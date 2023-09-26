@@ -1,19 +1,21 @@
 galaxy_info:
   author: amcaar@i3m.upv.es
   description: Install HTCondor cluster
-  company:  GRyCAP
+  company: GRyCAP
   license: Apache
-  min_ansible_version: 2.0
+  min_ansible_version: "2.0"
+  namespace: grycap
+  role_name: htcondor
   platforms:
-  - name: Ubuntu
-    versions:
-    - jammy
-    - focal
-  - name: EL
-    version:
-    - 7
-    - 8
-    - 9
+    - name: Ubuntu
+      versions:
+        - jammy
+        - focal
+    - name: EL
+      version:
+        - 7
+        - 8
+        - 9
   galaxy_tags:
     - htcondor
     - lrms
