@@ -51,4 +51,4 @@
       - condor
     state: present
     update_cache: true
-    enablerepo: "{{ repo_to_enable }}"
+    enablerepo: "{{ repo_to_enable | default(omit) }}"
