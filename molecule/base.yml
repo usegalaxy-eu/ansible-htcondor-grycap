@@ -15,10 +15,15 @@ platforms:
     privileged: true
     tty: true
   - name: el-7
-    image: docker.io/eniocarboni/docker-centos-systemd:centos7
+    image: centos:7
+    pre_build_image: false
     systemd: true
     privileged: true
+    command: "/usr/sbin/init"
+    # the system running the CentOS 7 container must use cgroups v1, the tests
+    # will fail on systems using cgroups v2
     tty: true
+    dockerfile: ../Dockerfile-centos-systemd.j2
   - name: el-8
     image: rockylinux:8
     pre_build_image: false
