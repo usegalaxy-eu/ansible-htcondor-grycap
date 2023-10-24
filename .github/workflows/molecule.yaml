@@ -13,7 +13,7 @@ jobs:
 
   molecule:
     name: Molecule
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: checkout
