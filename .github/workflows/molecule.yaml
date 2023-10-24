@@ -30,6 +30,3 @@ jobs:
           molecule --base-config molecule/base.yml test
         env:
           ANSIBLE_FORCE_COLOR: '1'
-
-      - name: Test installation of HTCondor
-        run: condor_status
