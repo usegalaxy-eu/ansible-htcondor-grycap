@@ -22,6 +22,8 @@ The variables that can be passed to this role and a brief description about them
 #   10.x
 #   23.0
 #   23.x
+#   24.0
+#   24.x
 htcondor_version: 10.x
 
 # Domain config
