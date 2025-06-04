@@ -49,7 +49,7 @@
   ansible.builtin.file:
     path: /etc/condor/config.d/00-htcondor-9.0.config
     state: absent
-  when: htcondor_version is match('^(?:10|23|24)(?:\\.|$)')
+  when: htcondor_version is ansible.builtin.match('^(?:10|23|24)(?:\\.|$)')
   notify: restart htcondor
 
 - name: Get password directory
