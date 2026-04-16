@@ -1,0 +1,4 @@
+---
+htcondor_role_manager: true
+htcondor_role_submit: true
+htcondor_role_execute: true

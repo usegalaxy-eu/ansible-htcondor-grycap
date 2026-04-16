@@ -43,12 +43,12 @@
     state: present
 
 - name: Enable extra repositories in RHEL8
-  set_fact:
+  ansible.builtin.set_fact:
     repo_to_enable: "powertools"
   when: ansible_distribution_major_version|int == 8
 
 - name: Enable extra repositories in RHEL9+
-  set_fact:
+  ansible.builtin.set_fact:
     repo_to_enable: "crb"
   when: ansible_distribution_major_version|int >= 9
 
@@ -58,4 +58,4 @@
       - condor
     state: present
     update_cache: true
-    enablerepo: "{{ repo_to_enable }}"
+    enablerepo: "{{ repo_to_enable | default(omit) }}"

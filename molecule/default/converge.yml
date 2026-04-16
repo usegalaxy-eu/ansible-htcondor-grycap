@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: "Include grycap.htcondor"
+      ansible.builtin.include_role:
+        name: "grycap.htcondor"
