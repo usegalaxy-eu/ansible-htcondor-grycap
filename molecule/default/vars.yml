@@ -1,4 +1,15 @@
 ---
+# Map OS versions to specific HTCondor versions (applies only to tests)
+htcondor_version_overrides:
+  default: "25.x"
+  RedHat:
+    "7": "23.x"
+    "8": "25.x"
+    "9": "25.x"
+    "10": "25.x"
+
+htcondor_version: "{{ htcondor_version_overrides.get(ansible_distribution, {}).get(ansible_distribution_major_version, '25.x') | default(htcondor_version_overrides['default']) }}"
+
 htcondor_role_manager: true
 htcondor_role_submit: true
 htcondor_role_execute: true
