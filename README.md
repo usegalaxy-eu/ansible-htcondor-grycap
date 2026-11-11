@@ -26,6 +26,9 @@ The variables that can be passed to this role and a brief description about them
 #   24.x
 htcondor_version: 10.x
 
+# Base URL of the HTCondor package repository and signing keys
+htcondor_repo_url: https://htcss-downloads.chtc.wisc.edu/repo
+
 # Domain config
 # https://htcondor.readthedocs.io/en/latest/users-manual/submitting-a-job.html#submitting-jobs-using-a-shared-file-system
 htcondor_domain: ""

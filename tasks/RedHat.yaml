@@ -35,11 +35,11 @@
 - name: Add HTCondor GPG key
   ansible.builtin.rpm_key:
     state: present
-    key: https://research.cs.wisc.edu/htcondor/repo/keys/HTCondor-{{ htcondor_version }}-Key
+    key: "{{ htcondor_repo_url }}/keys/HTCondor-{{ htcondor_version }}-Key"
 
 - name: Add YUM repository for HTCondor
   ansible.builtin.yum:
-    name: https://research.cs.wisc.edu/htcondor/repo/{{ htcondor_version }}/htcondor-release-current.el{{ ansible_distribution_major_version }}.noarch.rpm
+    name: "{{ htcondor_repo_url }}/{{ htcondor_version }}/htcondor-release-current.el{{ ansible_distribution_major_version }}.noarch.rpm"
     state: present
 
 - name: Enable extra repositories in RHEL8
